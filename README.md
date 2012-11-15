@@ -23,6 +23,11 @@ libraryDepedencies += "blockthirty" %% "mod-forms" % "1.0.0"
 Add supports for `keyed mapping` to Form, example:
 
 ```scala
+...
+import util.Forms._
+
+...
+
 def index = Action { implicit request =>
 
     // settings is a `Map[String, String]`
