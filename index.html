@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Mod-forms by meiwin</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Mod-forms</h1>
+        <h2>Play helper module that extends built-in Play (scala) form mappings and validations.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/meiwin/mod-forms/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/meiwin/mod-forms/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/meiwin/mod-forms" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>Form helper module for play 2</h1>
+
+<p>This module extends the built-in Form mappings of Play (Scala) framework.</p>
+
+<h2>Add to your project:</h2>
+
+<p>Configure resolver:</p>
+
+<div class="highlight"><pre><span class="n">resolvers</span> <span class="o">+=</span> <span class="s">"blockthirty releases"</span> <span class="n">at</span> <span class="s">"https://raw.github.com/meiwin/m2repo/master/releases/"</span>
+</pre></div>
+
+<p>Add library dependency:</p>
+
+<div class="highlight"><pre><span class="n">libraryDepedencies</span> <span class="o">+=</span> <span class="s">"blockthirty"</span> <span class="o">%%</span> <span class="s">"mod-forms"</span> <span class="o">%</span> <span class="s">"1.0.0"</span>
+</pre></div>
+
+<h2>How to use</h2>
+
+<h3>Keyed mapping</h3>
+
+<p>Add supports for <code>keyed mapping</code> to Form, example:</p>
+
+<div class="highlight"><pre><span class="o">...</span>
+<span class="k">import</span> <span class="nn">util.Forms._</span>
+
+<span class="o">...</span>
+
+<span class="k">def</span> <span class="n">index</span> <span class="k">=</span> <span class="nc">Action</span> <span class="o">{</span> <span class="k">implicit</span> <span class="n">request</span> <span class="k">=&gt;</span>
+
+    <span class="c1">// settings is a `Map[String, String]`</span>
+    <span class="c1">// for request parameters, e.g.</span>
+    <span class="c1">// - settings[s1] = 'abc'</span>
+    <span class="c1">// - settings[s2] = 'def'</span>
+    <span class="c1">// then settings will be a map = { "s1" -&gt; "abc", "s2" -&gt; "def" }</span>
+    <span class="k">val</span> <span class="n">settings</span> <span class="k">=</span> <span class="nc">Form</span><span class="o">(</span>
+        <span class="s">"settings"</span> <span class="o">-&gt;</span> <span class="n">keyed</span><span class="o">(</span><span class="n">nonEmptyText</span><span class="o">)</span>
+    <span class="o">).</span><span class="n">bindFromRequest</span><span class="o">.</span><span class="n">get</span>
+
+    <span class="o">...</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
